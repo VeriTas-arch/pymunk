@@ -138,9 +138,9 @@ class Transform(NamedTuple):
         """Translate this Transform and return the result.
 
         Example:
+
         >>> Transform.scaling(2).translated(3,4)
         Transform(a=2, b=0, c=0, d=2, tx=6, ty=8)
-
         """
         return self @ Transform.translation(x, y)
 
@@ -156,6 +156,8 @@ class Transform(NamedTuple):
 
     def rotated(self, t: float) -> "Transform":
         """Rotate this Transform and return the result.
+
+        Examples:
 
         >>> '%.2f, %.2f, %.2f, %.2f, %.2f, %.2f' % Transform.rotation(1).rotated(0.5)
         '0.07, 1.00, -1.00, 0.07, 0.00, 0.00'
