@@ -157,7 +157,7 @@ class Transform(NamedTuple):
     def rotated(self, t: float) -> "Transform":
         """Rotate this Transform and return the result.
 
-        Examples:
+        Examples (rotating a rotation transform):
 
         >>> '%.2f, %.2f, %.2f, %.2f, %.2f, %.2f' % Transform.rotation(1).rotated(0.5)
         '0.07, 1.00, -1.00, 0.07, 0.00, 0.00'
