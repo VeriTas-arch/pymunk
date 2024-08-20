@@ -3,16 +3,43 @@ Showcase
 ********
 
 This page shows some of the many ways Pymunk can be used. I hope you find them
- as inspiring as I do!
+as inspiring as I do!
 
-If you also have done something using Pymunk please let me know, and I can 
-add it here!
+This is not a complete list of everything made with Pymunk, just some of the 
+creations I have found online. If you also have done something using Pymunk 
+please let me know, and I can add it here!
 
 Games
 =====
 
 .. list-table:: 
     :widths: 40 60
+
+    * - .. image:: _static/suika-in-python.jpg
+      - `Suika in Python <https://youtu.be/In0EvhenzeQ>`_
+
+        :subscript:`made by Ole-Batting. Retrieved 2024-08-18`
+
+        A reimplementation of the `Suika Game 
+        <https://en.wikipedia.org/wiki/Suika_Game>`_ in Python / 
+        Pymunk. Combine fruits to make bigger fruits.
+
+        Make sure to not miss the second part where Ole-Batting adds proper 
+        sprites to the game! On `YouTube <https://youtu.be/_4kstHyPtSk>`_.
+        
+        Source code of both part 1 and 2 on 
+        `Github <https://github.com/Ole-Batting/suika>`_.
+
+    * - .. image:: _static/pykart-1.1.png
+      - `PyKart - build and drive your vehicles <https://valdotorium.itch.io/pykart>`_
+
+        :subscript:`made by Valdotorium. Retrieved 2024-08-18`
+
+        A driving game in which players can drive the vehicles they built in 
+        generated landscapes with physics! 
+
+        This game comes both as a download, but also as a web version 
+        playable directly in the browser and full source code on Github.
 
     * - .. image:: _static/guide-the-ball.png
       - `Guide The Ball <https://github.com/francisA88/Guide-The-Ball-1>`_
@@ -259,6 +286,7 @@ Papers / Science
 Pymunk has been used or referenced in a number of scientific papers.
 
 List of papers which has used or mentioned Pymunk:
+
 .. (list made using "Chicago" style citation)
 
 #. Bartók, Roland, and Bertalan Toronya. 
@@ -640,7 +668,7 @@ List of papers which has used or mentioned Pymunk:
    "Dynamic Robot Path Planning Among Crowds in Emergency Situations."
 
   
-List last updated 2024-04-28. If something is missing or wrong, please contact 
+List last updated 2024-08-18. If something is missing or wrong, please contact 
 me!
 
 
