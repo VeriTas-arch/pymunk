@@ -31,7 +31,7 @@ class Transform(NamedTuple):
     Or using one of the static methods like identity or translation (see each
     method for details).
 
-    The Transform supports the matrix multiplicaiton operator (@) with a
+    The Transform supports the matrix multiplicaiton operator (`@`) with a
     Transform, Vec2d or tuple as second operand, which produces a transformed
     Transform or Vec2d as result:
 
@@ -116,7 +116,7 @@ class Transform(NamedTuple):
 
     @staticmethod
     def identity() -> "Transform":
-        """The identity transform
+        """The identity transform.
 
         Example:
 
@@ -168,7 +168,7 @@ class Transform(NamedTuple):
 
     @staticmethod
     def translation(x: float, y: float) -> "Transform":
-        """A translation transform
+        """A translation transform.
 
         Example to translate (move) by 3 on x and 5 in y axis:
 
@@ -189,9 +189,9 @@ class Transform(NamedTuple):
     # split into scale and scale_non-uniform
     @staticmethod
     def scaling(s: float) -> "Transform":
-        """A scaling transform
+        """A scaling transform.
 
-        Example to scale 4x:
+        Example to scale `4x`:
 
         >>> Transform.scaling(4)
         Transform(a=4, b=0, c=0, d=4, tx=0, ty=0)
