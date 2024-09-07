@@ -21,11 +21,12 @@ from pymunk.shape_filter import ShapeFilter
 from pymunk.space_debug_draw_options import SpaceDebugDrawOptions
 
 from . import _version
-from ._callbacks import *
+from ._callbacks import *  # noqa: F403
 from ._chipmunk_cffi import ffi, lib
 
 cp = lib
 
+# ruff: noqa: E402
 from ._pickle import PickleMixin, _State
 from .arbiter import _arbiter_from_dict, _arbiter_to_dict
 from .body import Body
@@ -57,7 +58,7 @@ class Space(PickleMixin, object):
     the pickle protocol used there are some restrictions on what functions can
     be copied/pickled.
 
-    Example::
+    Example:
 
     >>> import pymunk, pickle
     >>> space = pymunk.Space()
@@ -160,7 +161,7 @@ class Space(PickleMixin, object):
 
     @property
     def shapes(self) -> List[Shape]:
-        """A list of all the shapes added to this space
+        """A list of all the shapes added to this space.
 
         (includes both static and non-static)
         """
@@ -168,12 +169,12 @@ class Space(PickleMixin, object):
 
     @property
     def bodies(self) -> List[Body]:
-        """A list of the bodies added to this space"""
+        """A list of the bodies added to this space."""
         return list(self._bodies)
 
     @property
     def constraints(self) -> List[Constraint]:
-        """A list of the constraints added to this space"""
+        """A list of the constraints added to this space."""
         return list(self._constraints)
 
     def _setup_static_body(self, static_body: Body) -> None:
@@ -319,7 +320,7 @@ class Space(PickleMixin, object):
     collision_bias = property(
         _get_collision_bias,
         _set_collision_bias,
-        doc="""Determines how fast overlapping shapes are pushed apart.
+        doc="""Determine how fast overlapping shapes are pushed apart.
 
         Pymunk allows fast moving objects to overlap, then fixes the overlap
         over time. Overlapping objects are unavoidable even if swept
@@ -361,14 +362,14 @@ class Space(PickleMixin, object):
 
     current_time_step = property(
         _get_current_time_step,
-        doc="""Retrieves the current (if you are in a callback from
-        Space.step()) or most recent (outside of a Space.step() call)
+        doc="""Retrieve the current (if you are in a callback from
+        `Space.step()`) or most recent (outside of a `Space.step()` call)
         timestep.
         """,
     )
 
     def add(self, *objs: _AddableObjects) -> None:
-        """Add one or many shapes, bodies or constraints (joints) to the space
+        """Add one or many shapes, bodies or constraints (joints) to the space.
 
         Unlike Chipmunk and earlier versions of pymunk its now allowed to add
         objects even from a callback during the simulation step. However, the
@@ -396,9 +397,9 @@ class Space(PickleMixin, object):
                 raise Exception(f"Unsupported type  {type(o)} of {o}.")
 
     def remove(self, *objs: _AddableObjects) -> None:
-        """Remove one or many shapes, bodies or constraints from the space
+        """Remove one or many shapes, bodies or constraints from the space.
 
-        Unlike Chipmunk and earlier versions of Pymunk its now allowed to
+        Unlike Chipmunk and earlier versions of Pymunk, it's now allowed to
         remove objects even from a callback during the simulation step.
         However, the removal will not be performed until the end of the step.
 
@@ -426,9 +427,9 @@ class Space(PickleMixin, object):
         # print("addshape", self._space, shape)
         assert shape._id not in self._shapes, "Shape already added to space."
         assert (
-            shape.space == None
+            shape.space is None
         ), "Shape already added to another space. A shape can only be in one space at a time."
-        assert shape.body != None, "The shape's body is not set."
+        assert shape.body is not None, "The shape's body is not set."
         assert (
             shape.body.space == self
         ), "The shape's body must be added to the space before (or at the same time) as the shape."
@@ -438,23 +439,23 @@ class Space(PickleMixin, object):
         cp.cpSpaceAddShape(self._space, shape._shape)
 
     def _add_body(self, body: "Body") -> None:
-        """Adds a body to the space"""
+        """Add a body to the space."""
         assert body not in self._bodies, "Body already added to this space."
-        assert body.space == None, "Body already added to another space."
+        assert body.space is None, "Body already added to another space."
 
         body._space = weakref.proxy(self)
         self._bodies[body] = None
         cp.cpSpaceAddBody(self._space, body._body)
 
     def _add_constraint(self, constraint: "Constraint") -> None:
-        """Adds a constraint to the space"""
+        """Add a constraint to the space."""
         assert constraint not in self._constraints, "Constraint already added to space."
 
         self._constraints[constraint] = None
         cp.cpSpaceAddConstraint(self._space, constraint._constraint)
 
     def _remove_shape(self, shape: "Shape") -> None:
-        """Removes a shape from the space"""
+        """Remove a shape from the space."""
         assert shape._id in self._shapes, "shape not in space, already removed?"
         self._removed_shapes[shape._id] = shape
         shape._space = None
@@ -464,7 +465,7 @@ class Space(PickleMixin, object):
         del self._shapes[shape._id]
 
     def _remove_body(self, body: "Body") -> None:
-        """Removes a body from the space"""
+        """Remove a body from the space."""
         assert body in self._bodies, "body not in space, already removed?"
         body._space = None
         # During GC at program exit sometimes the shape might already be removed. Then skip this step.
@@ -473,7 +474,7 @@ class Space(PickleMixin, object):
         del self._bodies[body]
 
     def _remove_constraint(self, constraint: "Constraint") -> None:
-        """Removes a constraint from the space"""
+        """Remove a constraint from the space."""
         assert (
             constraint in self._constraints
         ), "constraint not in space, already removed?"
@@ -513,9 +514,9 @@ class Space(PickleMixin, object):
         _set_threads,
         doc="""The number of threads to use for running the step function. 
         
-        Only valid when the Space was created with threaded=True. Currently the 
+        Only valid when the Space was created with `threaded=True`. Currently the 
         max limit is 2, setting a higher value wont have any effect. The 
-        default is 1 regardless if the Space was created with threaded=True, 
+        default is 1 regardless if the Space was created with `threaded=True`, 
         to keep determinism in the simulation. Note that Windows does not 
         support the threaded solver.
         """,
@@ -565,7 +566,7 @@ class Space(PickleMixin, object):
         calling it 100 times with a dt of 0.01 even if the end result is
         that the simulation moved forward 100 units. Performing  multiple
         calls with a smaller dt creates a more stable and accurate
-        simulation. Therefor it sometimes make sense to have a little for loop
+        simulation. Therefore it sometimes makes sense to have a little for loop
         around the step call, like in this example:
 
         >>> import pymunk
@@ -809,7 +810,7 @@ class Space(PickleMixin, object):
 
         shape = self._get_shape(_shape)
 
-        if shape != None:
+        if shape is not None:
             return PointQueryInfo(
                 shape,
                 Vec2d(info.point.x, info.point.y),
@@ -893,7 +894,7 @@ class Space(PickleMixin, object):
         )
 
         shape = self._get_shape(_shape)
-        if shape != None:
+        if shape is not None:
             return SegmentQueryInfo(
                 shape,
                 Vec2d(info.point.x, info.point.y),
@@ -928,7 +929,7 @@ class Space(PickleMixin, object):
         return query_hits
 
     def shape_query(self, shape: Shape) -> List[ShapeQueryInfo]:
-        """Query a space for any shapes overlapping the given shape
+        """Query a space for any shapes overlapping the given shape.
 
         .. Note::
             Sensor shapes are included in the result
@@ -994,7 +995,7 @@ class Space(PickleMixin, object):
         return _arbiters
 
     def __getstate__(self) -> _State:
-        """Return the state of this object
+        """Return the state of this object.
 
         This method allows the usage of the :mod:`copy` and :mod:`pickle`
         modules with this class.
@@ -1004,7 +1005,7 @@ class Space(PickleMixin, object):
         d["special"].append(("pymunk_version", _version.version))
         # bodies needs to be added to the state before their shapes.
         d["special"].append(("bodies", self.bodies))
-        if self._static_body != None:
+        if self._static_body is not None:
             # print("getstate", self._static_body)
             d["special"].append(("_static_body", self._static_body))
 
@@ -1073,7 +1074,7 @@ class Space(PickleMixin, object):
                 self.add(*v)
             elif k == "_handlers":
                 for k2, hd in v:
-                    if k2 == None:
+                    if k2 is None:
                         h = self.add_default_collision_handler()
                     elif isinstance(k2, tuple):
                         h = self.add_collision_handler(k2[0], k2[1])
