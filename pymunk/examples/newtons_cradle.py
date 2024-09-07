@@ -1,5 +1,6 @@
 """A screensaver version of Newton's Cradle with an interactive mode. 
 """
+
 __docformat__ = "reStructuredText"
 
 import os

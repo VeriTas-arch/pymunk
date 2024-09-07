@@ -131,7 +131,9 @@ class DrawOptions(pymunk.SpaceDebugDrawOptions):
 
     def draw_segment(self, a: Vec2d, b: Vec2d, color: SpaceDebugColor) -> None:
         c = color.as_int()
-        line = pyglet.shapes.Line(a.x, a.y, b.x, b.y, width=1, color=c, batch=self.batch)
+        line = pyglet.shapes.Line(
+            a.x, a.y, b.x, b.y, width=1, color=c, batch=self.batch
+        )
         self.draw_shapes.append(line)
 
     def draw_fat_segment(

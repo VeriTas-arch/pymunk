@@ -17,7 +17,6 @@ To try yourself::
 
 """
 
-
 import random
 
 import pyglet

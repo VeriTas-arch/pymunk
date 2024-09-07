@@ -1,5 +1,6 @@
 """A very basic flipper game.
 """
+
 __docformat__ = "reStructuredText"
 
 import random

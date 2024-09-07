@@ -4,7 +4,6 @@ position, and then respawning them to verify each ball ends up in the same
 place. Inspired by Pymunk user Nam Dao.
 """
 
-
 import random
 
 import pygame

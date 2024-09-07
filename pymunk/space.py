@@ -139,9 +139,9 @@ class Space(PickleMixin, object):
 
         self._space = ffi.gc(cp_space, spacefree)
 
-        self._handlers: Dict[
-            Any, CollisionHandler
-        ] = {}  # To prevent the gc to collect the callbacks.
+        self._handlers: Dict[Any, CollisionHandler] = (
+            {}
+        )  # To prevent the gc to collect the callbacks.
 
         self._post_step_callbacks: Dict[Any, Callable[["Space"], None]] = {}
         self._removed_shapes: Dict[int, Shape] = {}

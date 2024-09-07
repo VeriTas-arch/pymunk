@@ -1,6 +1,7 @@
 """This is an example on how the autogeometry can be used for deformable 
 terrain.
 """
+
 __docformat__ = "reStructuredText"
 
 import sys

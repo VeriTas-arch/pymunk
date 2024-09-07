@@ -59,9 +59,9 @@ class SpaceDebugDrawOptions(object):
     Use on the flags property to control if constraints should be drawn or not.
     """
 
-    DRAW_COLLISION_POINTS: ClassVar[
-        _DrawFlags
-    ] = lib.CP_SPACE_DEBUG_DRAW_COLLISION_POINTS
+    DRAW_COLLISION_POINTS: ClassVar[_DrawFlags] = (
+        lib.CP_SPACE_DEBUG_DRAW_COLLISION_POINTS
+    )
     """Draw collision points.
     
     Use on the flags property to control if collision points should be drawn or

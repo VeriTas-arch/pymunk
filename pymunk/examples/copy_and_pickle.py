@@ -1,5 +1,6 @@
 """This example shows how you can copy, save and load a space using pickle.
 """
+
 import pickle
 
 import pygame

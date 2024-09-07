@@ -36,6 +36,7 @@ a Pymunk Poly or Segment::
 
 
 """
+
 __docformat__ = "reStructuredText"
 
 from typing import TYPE_CHECKING, Callable, List, Sequence, Tuple, Union, overload
@@ -53,6 +54,7 @@ _SampleFunc = Callable[[Tuple[float, float]], float]
 _Polyline = Union[List[Tuple[float, float]], List[Vec2d]]
 # Union is needed since List is invariant
 # and Sequence cant be used since CFFI requires a List (or Tuple)
+
 
 # ruff: noqa: E741
 def _to_chipmunk(polyline: _Polyline) -> ffi.CData:
@@ -201,12 +203,10 @@ class PolylineSet(Sequence[List[Vec2d]]):
         return self._set.count
 
     @overload
-    def __getitem__(self, index: int) -> List[Vec2d]:
-        ...
+    def __getitem__(self, index: int) -> List[Vec2d]: ...
 
     @overload
-    def __getitem__(self, index: slice) -> "PolylineSet":
-        ...
+    def __getitem__(self, index: slice) -> "PolylineSet": ...
 
     def __getitem__(self, key: Union[int, slice]) -> Union[List[Vec2d], "PolylineSet"]:
         assert not isinstance(key, slice), "Slice indexing not supported"

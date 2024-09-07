@@ -4,11 +4,13 @@ This program will showcase several features of Pymunk, such as collisions,
 debug drawing, automatic generation of shapes from images, motors, joints and
 sleeping bodies.
 """
+
 __docformat__ = "reStructuredText"
 
 import os.path
 import random
 import sys
+
 import pygame
 
 import pymunk
@@ -17,7 +19,6 @@ import pymunk.pygame_util
 from pymunk import Vec2d
 
 random.seed(5)  # try keep difference the random factor the same each run.
-
 
 
 fps = 60
@@ -99,6 +100,7 @@ for line in line_set:
 floor = pymunk.Segment(space.static_body, (-100, 300), (1000, 220), 5)
 floor.friction = 1.0
 space.add(floor)
+
 
 ### events
 def big_ball(space):

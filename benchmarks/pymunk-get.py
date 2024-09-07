@@ -16,7 +16,7 @@ print(
 t += b.position.x + b.position.y + b.angle
 """,
             setup=s,
-            repeat=10
+            repeat=10,
         )
     )
 )

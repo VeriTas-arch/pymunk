@@ -2,13 +2,11 @@ from typing import Tuple, Union, overload
 
 
 @overload
-def f1(t: Tuple[int]) -> Tuple[int]:
-    ...
+def f1(t: Tuple[int]) -> Tuple[int]: ...
 
 
 @overload
-def f1(t: Tuple[int, int]) -> Tuple[int, int]:
-    ...
+def f1(t: Tuple[int, int]) -> Tuple[int, int]: ...
 
 
 def f1(t: Union[Tuple[int], Tuple[int, int]]) -> Union[Tuple[int], Tuple[int, int]]:
