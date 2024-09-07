@@ -23,7 +23,7 @@ API Reference
         pymunk.examples
 
 .. container:: custom-index
- 
+
     ..comment
 
 .. rubric:: Pymunk
