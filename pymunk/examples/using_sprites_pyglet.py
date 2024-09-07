@@ -33,8 +33,8 @@ static_lines = [
     pymunk.Segment(space.static_body, (11.0, 280.0), (407.0, 246.0), 0.0),
     pymunk.Segment(space.static_body, (407.0, 246.0), (407.0, 343.0), 0.0),
 ]
-for l in static_lines:
-    l.friction = 0.5
+for line in static_lines:
+    line.friction = 0.5
 space.add(*static_lines)
 
 

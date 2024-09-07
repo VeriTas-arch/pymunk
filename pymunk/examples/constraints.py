@@ -176,7 +176,7 @@ def main():
     # Build rendered help texts
     box_texts = {}
     for k in txts:
-        l = 0
+        # l = 0
         box_texts[k] = []
         # Only take the first 5 lines.
         for line in txts[k].splitlines()[:5]:

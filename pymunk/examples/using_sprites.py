@@ -45,8 +45,8 @@ def main():
         pymunk.Segment(space.static_body, (11.0, 280.0), (407.0, 246.0), 0.0),
         pymunk.Segment(space.static_body, (407.0, 246.0), (407.0, 343.0), 0.0),
     ]
-    for l in static_lines:
-        l.friction = 0.5
+    for line in static_lines:
+        line.friction = 0.5
     space.add(*static_lines)
 
     ticks_to_next_spawn = 10
@@ -78,12 +78,12 @@ def main():
             space.add(body, shape)
             logos.append(shape)
 
-        ### Update physics
+        # Update physics
         dt = 1.0 / 60.0
         for x in range(1):
             space.step(dt)
 
-        ### Draw stuff
+        # Draw stuff
         screen.fill(pygame.Color("black"))
 
         for logo_shape in logos:
@@ -118,9 +118,9 @@ def main():
             p2 = round(pv2.x), round(flipy(pv2.y))
             pygame.draw.lines(screen, pygame.Color("lightgray"), False, [p1, p2], 2)
 
-        ### Flip screen
+        # Flip screen
         pygame.display.flip()
-        clock.tick(50)
+        clock.tick(60)
         pygame.display.set_caption("fps: " + str(clock.get_fps()))
 
 

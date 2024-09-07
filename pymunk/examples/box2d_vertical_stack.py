@@ -36,8 +36,8 @@ class Main(pyglet.window.Window):
             pymunk.Segment(self.space.static_body, Vec2d(20, 55), Vec2d(600, 55), 1),
             pymunk.Segment(self.space.static_body, Vec2d(550, 55), Vec2d(550, 400), 1),
         ]
-        for l in static_lines:
-            l.friction = 0.3
+        for line in static_lines:
+            line.friction = 0.3
         self.space.add(*static_lines)
 
         for x in range(5):
@@ -88,7 +88,7 @@ class Main(pyglet.window.Window):
 
 
 def main():
-    main = Main()
+    main = Main()  # noqa: F841
     pyglet.app.run()
 
 

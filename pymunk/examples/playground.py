@@ -45,7 +45,7 @@ class PhysicsDemo:
         h = 10
         for y in range(1, h):
             # for x in range(1, y):
-            x = 0
+            # x = 0
             s = 10
             p = Vec2d(300, 40) + Vec2d(0, y * s * 2)
             self.polys.append(self.create_box(p, size=s, mass=1))
@@ -280,7 +280,7 @@ class PhysicsDemo:
         hit = self.space.point_query_nearest(
             self.flipyv(Vec2d(*mpos)), 0, pm.ShapeFilter()
         )
-        if hit != None:
+        if hit is not None:
             self.shape_to_remove = hit.shape
         else:
             self.shape_to_remove = None

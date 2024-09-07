@@ -36,7 +36,7 @@ def new_space(color_dict):
         shape = pymunk.Circle(body, 6)
         shape.mass = 1
         shape.data = i
-        if color_dict != None and i in color_dict:
+        if color_dict is not None and i in color_dict:
             shape.color = color_dict[i]
         space.add(body, shape)
 

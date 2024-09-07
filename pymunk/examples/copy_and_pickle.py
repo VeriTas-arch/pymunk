@@ -6,7 +6,6 @@ import pygame
 
 import pymunk
 import pymunk.pygame_util
-from pymunk import Vec2d
 
 width, height = 800, 600
 
@@ -36,11 +35,11 @@ def main():
             p2 = box[0]
         else:
             p2 = box[i + 1]
-        l = pymunk.Segment(space1.static_body, p1, p2, 5)
-        l.elasticity = 0.5
-        l.friction = 1
+        line = pymunk.Segment(space1.static_body, p1, p2, 5)
+        line.elasticity = 0.5
+        line.friction = 1
 
-        space1.add(l)
+        space1.add(line)
 
     template_box = pymunk.Poly.create_box(pymunk.Body(), (20, 20))
     template_box.mass = 1
@@ -90,7 +89,7 @@ def main():
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 # find all bodies with a circle shape in all spaces
                 for s in space1.shapes + space2.shapes:
-                    if isinstance(s, pymunk.Circle) and s.body != None:
+                    if isinstance(s, pymunk.Circle) and s.body is not None:
                         s.body.apply_impulse_at_local_point((20000, 0))
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_p:
                 pygame.image.save(screen, "copy_and_pickle.png")

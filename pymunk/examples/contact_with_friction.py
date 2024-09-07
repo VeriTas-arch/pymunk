@@ -10,7 +10,6 @@ import pygame
 
 import pymunk
 import pymunk.pygame_util
-from pymunk import Vec2d
 
 pymunk.pygame_util.positive_y_is_up = True
 
@@ -47,8 +46,8 @@ def main():
         pymunk.Segment(space.static_body, (11.0, 280.0), (407.0, 246.0), 0.0),
         pymunk.Segment(space.static_body, (407.0, 246.0), (407.0, 343.0), 0.0),
     ]
-    for l in static_lines:
-        l.friction = 0.5
+    for line in static_lines:
+        line.friction = 0.5
     space.add(*static_lines)
 
     ticks_to_next_ball = 10

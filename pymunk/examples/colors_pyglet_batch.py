@@ -170,7 +170,7 @@ def on_draw():
         ps = []
         for body in space.bodies:
             ps += [body.position.x, body.position.y]
-    if vlist == None:
+    if vlist is None:
         vlist = shader.vertex_list(
             len(ps) // 2,
             pyglet.gl.GL_POINTS,

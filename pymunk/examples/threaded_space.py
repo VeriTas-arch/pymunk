@@ -1,3 +1,8 @@
+"""This example demonstrates the threaded solver of pymunk.
+
+Note that Windows does not support the threaded solver.
+"""
+
 import time
 
 import pymunk
@@ -28,7 +33,7 @@ class PyramidDemo:
 
         for i in range(25):
             y = Vec2d(*x)
-            for j in range(i, 25):
+            for _ in range(i, 25):
                 size = 10
                 points = [(-size, -size), (-size, size), (size, size), (size, -size)]
                 mass = 1.0

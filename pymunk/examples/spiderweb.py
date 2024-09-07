@@ -1,6 +1,6 @@
-"""Showcase of a elastic spiderweb (drawing with pyglet)
+"""Showcase of a elastic spiderweb (drawing with pyglet).
 
-It is possible to grab one of the crossings with the mouse
+It is possible to grab one of the crossings with the mouse.
 """
 
 __docformat__ = "reStructuredText"
@@ -13,9 +13,9 @@ from pymunk.vec2d import Vec2d
 window = pyglet.window.Window()
 space = pymunk.Space()
 
-space.gravity = 0, -900
+space.gravity = (0, -900)
 space.damping = 0.999
-c = Vec2d(window.width / 2.0, window.height / 2.0)
+c = Vec2d(window.width, window.height) / 2.0
 
 ### WEB
 web_group = 1
@@ -92,11 +92,12 @@ for b in bs[-17::4]:
 
 
 def update(dt):
-    # Note that we dont use dt as input into step. That is because the
-    # simulation will behave much better if the step size doesnt change
-    # between frames.
+    """Note that we dont use dt as input into step. That is because the
+    simulation will behave much better if the step size doesnt change
+    between frames.
+    """
     r = 10
-    for x in range(r):
+    for _ in range(r):
         space.step(1.0 / 30.0 / r)
 
 
@@ -111,7 +112,7 @@ mouse_body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
 def on_mouse_press(x, y, button, modifiers):
     mouse_body.position = Vec2d(x, y)
     hit = space.point_query_nearest((x, y), 10, pymunk.ShapeFilter())
-    if hit != None:
+    if hit is not None:
         global selected
         body = hit.shape.body
         rest_length = mouse_body.position.get_distance(body.position)
@@ -126,7 +127,7 @@ def on_mouse_press(x, y, button, modifiers):
 @window.event
 def on_mouse_release(x, y, button, modifiers):
     global selected
-    if selected != None:
+    if selected is not None:
         space.remove(selected)
         selected = None
 

@@ -63,7 +63,7 @@ def main():
     space = pymunk.Space()
     space.gravity = (0.0, 900.0)
 
-    lines = add_L(space)
+    lines = add_L(space)  # noqa: F841
     balls = []
     draw_options = pymunk.pygame_util.DrawOptions(screen)
 

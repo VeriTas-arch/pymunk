@@ -32,7 +32,7 @@ def stick_arrow_to_target(space, arrow_body, target_body, position, flying_arrow
     space.add(gear_joint)
     try:
         flying_arrows.remove(arrow_body)
-    except:
+    except Exception:
         pass
 
 

@@ -9,15 +9,16 @@ __docformat__ = "reStructuredText"
 import os.path
 import random
 import sys
-
-random.seed(5)  # try keep difference the random factor the same each run.
-
 import pygame
 
 import pymunk
 import pymunk.autogeometry
 import pymunk.pygame_util
 from pymunk import Vec2d
+
+random.seed(5)  # try keep difference the random factor the same each run.
+
+
 
 fps = 60
 pygame.init()
@@ -48,7 +49,7 @@ def sample_func(point):
 
         return color.a
         # return color.hsla[2]
-    except:
+    except:  # noqa: E722
         return 0
 
 
@@ -68,7 +69,7 @@ for line in line_set:
     min_x = 1000
     max_y = 0
     min_y = 1000
-    for l in line:
+    for l in line:  # noqa: E741
         max_x = max(max_x, l.x)
         min_x = min(min_x, l.x)
         max_y = max(max_y, l.y)

@@ -3,7 +3,6 @@ from shapes_for_draw_demos import fill_space
 
 import pymunk
 import pymunk.matplotlib_util
-from pymunk.vec2d import Vec2d
 
 space = pymunk.Space()
 captions = fill_space(space, (1, 1, 0, 1))
