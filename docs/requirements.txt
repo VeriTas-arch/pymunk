@@ -1,3 +1,4 @@
 aafigure
 reportlab # required for aafigure when generating pdf with sphinx
 sphinx>=3.0
+sphinx_rtd_theme
