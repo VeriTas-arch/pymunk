@@ -23,7 +23,7 @@ class Transform(NamedTuple):
         >>> Transform(1,2,3,4,5,6)
         Transform(a=1, b=2, c=3, d=4, tx=5, ty=6)
 
-    Or overriding only some of the values (on a identity matrix):
+    Or overriding only some of the values (on an identity matrix):
 
         >>> Transform(b=3,ty=5)
         Transform(a=1, b=3, c=0, d=1, tx=0, ty=5)
@@ -31,15 +31,14 @@ class Transform(NamedTuple):
     Or using one of the static methods like identity or translation (see each
     method for details).
 
-    The Transform supports the matrix multiplicaiton operator (`@`) with a
-    Transform, Vec2d or tuple as second operand, which produces a transformed
-    Transform or Vec2d as result:
+    The `Transform` supports the matrix multiplicaiton operator (`@`) with a
+    `Transform`, `Vec2d` or `tuple` as second operand, which produces a transformed
+    `Transform` or `Vec2d` as result:
 
         >>> Transform.scaling(2) @ Transform.scaling(3)
         Transform(a=6, b=0, c=0, d=6, tx=0, ty=0)
         >>> Transform.scaling(2) @ Vec2d(1, 2)
         Vec2d(2, 4)
-
     """
 
     a: float = 1
@@ -66,7 +65,6 @@ class Transform(NamedTuple):
         """Multiply this transform with a Transform, Vec2d or Tuple of size 2
         or 6.
 
-
         Examples (Transform @ Transform):
 
         >>> Transform() @ Transform() == Transform.identity()
@@ -91,7 +89,6 @@ class Transform(NamedTuple):
         Vec2d(4, 7)
         >>> Transform.rotation(1) @ Vec2d(1, 2) == Vec2d(1, 2).rotated(1)
         True
-
         """
         assert (
             len(other) == 2 or len(other) == 6
@@ -123,7 +120,7 @@ class Transform(NamedTuple):
         >>> Transform.identity()
         Transform(a=1, b=0, c=0, d=1, tx=0, ty=0)
 
-        Returns a Transform with this matrix:
+        Return a Transform with this matrix:
 
         = = =
         1 0 0
@@ -170,13 +167,12 @@ class Transform(NamedTuple):
     def translation(x: float, y: float) -> "Transform":
         """A translation transform.
 
-        Example:
-            Translate (move) by 3 on x and 5 in y axis.
+        Example (translate (move) by 3 on x and 5 in y axis):
 
         >>> Transform.translation(3, 5)
         Transform(a=1, b=0, c=0, d=1, tx=3, ty=5)
 
-        Returns a Transform with this matrix:
+        Return a Transform with this matrix:
 
         = = =
         1 0 x
@@ -192,13 +188,12 @@ class Transform(NamedTuple):
     def scaling(s: float) -> "Transform":
         """A scaling transform.
 
-        Example:
-            Scale by 4.
+        Example (scale by 4):
 
         >>> Transform.scaling(4)
         Transform(a=4, b=0, c=0, d=4, tx=0, ty=0)
 
-        Returns a Transform with this matrix:
+        Return a Transform with this matrix:
 
         = = =
         s 0 0
@@ -213,12 +208,12 @@ class Transform(NamedTuple):
     def rotation(t: float) -> "Transform":
         """A rotation transform.
 
-        Example:
-            Rotate by 1 rad.
+        Example (rotate by 1 rad):
+
         >>> '%.2f, %.2f, %.2f, %.2f, %.2f, %.2f' % Transform.rotation(1)
         '0.54, 0.84, -0.84, 0.54, 0.00, 0.00'
 
-        Returns a Transform with this matrix:
+        Return a Transform with this matrix:
 
         ====== ======= =
         cos(t) -sin(t) 0
