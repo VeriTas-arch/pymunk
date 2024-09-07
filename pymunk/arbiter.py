@@ -1,7 +1,7 @@
 __docformat__ = "reStructuredText"
 
 
-from typing import TYPE_CHECKING, Tuple, Dict, List, Any, Iterable, Sequence
+from typing import TYPE_CHECKING, Any, Dict, Iterable, List, Sequence, Tuple
 
 if TYPE_CHECKING:
     from .space import Space

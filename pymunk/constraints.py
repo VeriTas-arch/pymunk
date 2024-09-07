@@ -306,9 +306,9 @@ class Constraint(PickleMixin, TypingAttrMixing, object):
         super(Constraint, self).__setstate__(state)
 
         for k, v in state["special"]:
-            if k == "_pre_solve_func" and v != None:
+            if k == "_pre_solve_func" and v is not None:
                 self.pre_solve = v
-            elif k == "_post_solve_func" and v != None:
+            elif k == "_post_solve_func" and v is not None:
                 self.post_solve = v
 
 

@@ -591,7 +591,7 @@ class Body(PickleMixin, TypingAttrMixing, object):
 
         Cannot be called from a callback.
         """
-        if self._space == None:
+        if self._space is None:
             raise Exception("Body not added to space")
         lib.cpBodySleep(self._body)
 
@@ -609,7 +609,7 @@ class Body(PickleMixin, TypingAttrMixing, object):
         to initialize levels and start stacks of objects in a pre-sleeping
         state.
         """
-        if self._space == None:
+        if self._space is None:
             raise Exception("Body not added to space")
         lib.cpBodySleepWithGroup(self._body, body._body)
 
@@ -752,7 +752,7 @@ class Body(PickleMixin, TypingAttrMixing, object):
         for k, v in state["special"]:
             if k == "is_sleeping" and v:
                 pass
-            elif k == "_velocity_func" and v != None:
+            elif k == "_velocity_func" and v is not None:
                 self.velocity_func = v
-            elif k == "_position_func" and v != None:
+            elif k == "_position_func" and v is not None:
                 self.position_func = v

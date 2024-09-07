@@ -18,7 +18,8 @@ from pymunk.space_debug_draw_options import SpaceDebugColor
 from pymunk.vec2d import Vec2d
 
 if TYPE_CHECKING:
-    import matplotlib as mpl
+    # import matplotlib as mpl
+    ...
 
 
 class DrawOptions(pymunk.SpaceDebugDrawOptions):

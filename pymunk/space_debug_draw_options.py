@@ -6,7 +6,6 @@ if TYPE_CHECKING:
     from .shapes import Shape
     from types import TracebackType
 
-import math
 
 from ._chipmunk_cffi import ffi, lib
 from .body import Body
@@ -332,7 +331,7 @@ class SpaceDebugDrawOptions(object):
             return SpaceDebugColor(*shape.color)
 
         color = self.shape_dynamic_color
-        if shape.body != None:
+        if shape.body is not None:
             if shape.body.body_type == Body.STATIC:
                 color = self.shape_static_color
             elif shape.body.body_type == Body.KINEMATIC:

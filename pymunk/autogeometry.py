@@ -54,7 +54,7 @@ _Polyline = Union[List[Tuple[float, float]], List[Vec2d]]
 # Union is needed since List is invariant
 # and Sequence cant be used since CFFI requires a List (or Tuple)
 
-
+# ruff: noqa: E741
 def _to_chipmunk(polyline: _Polyline) -> ffi.CData:
     l = len(polyline)
     _line = ffi.new("cpPolyline *", {"verts": l})

@@ -75,7 +75,7 @@ from . import _chipmunk_cffi
 cp = _chipmunk_cffi.lib
 ffi = _chipmunk_cffi.ffi
 
-
+# ruff: noqa: E402, F403
 from . import _version
 from .arbiter import Arbiter
 from .bb import BB

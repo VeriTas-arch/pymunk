@@ -3,10 +3,10 @@ __docformat__ = "reStructuredText"
 from typing import NamedTuple, Tuple
 
 from . import _chipmunk_cffi
+from .vec2d import Vec2d
 
 lib = _chipmunk_cffi.lib
 ffi = _chipmunk_cffi.ffi
-from .vec2d import Vec2d
 
 
 class BB(NamedTuple):

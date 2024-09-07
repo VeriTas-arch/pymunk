@@ -10,8 +10,8 @@ http://untamed.wild-refuge.net/rmxpresources.php?characters
 __docformat__ = "reStructuredText"
 
 import math
-import sys
 import os.path
+import sys
 
 import pygame
 

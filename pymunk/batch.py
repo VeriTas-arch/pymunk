@@ -1,5 +1,5 @@
 """The batch module contain functions to efficiently get and set space data in
-   a batch insteaf of one by one. 
+a batch instead of one by one. 
 
 .. note:: 
     This module is highly experimental and will likely change in future Pymunk 

@@ -722,8 +722,8 @@ class Poly(Shape):
         :rtype: [:py:class:`Vec2d`]
         """
         verts = []
-        l = cp.cpPolyShapeGetCount(self._shape)
-        for i in range(l):
+        vert_num = cp.cpPolyShapeGetCount(self._shape)
+        for i in range(vert_num):
             v = cp.cpPolyShapeGetVert(self._shape, i)
             verts.append(Vec2d(v.x, v.y))
         return verts

@@ -6,9 +6,9 @@ sleeping bodies.
 """
 __docformat__ = "reStructuredText"
 
+import os.path
 import random
 import sys
-import os.path
 
 random.seed(5)  # try keep difference the random factor the same each run.
 

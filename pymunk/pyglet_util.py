@@ -124,15 +124,15 @@ class DrawOptions(pymunk.SpaceDebugDrawOptions):
         self.draw_shapes.append(c)
         cc = pos + Vec2d(radius, 0).rotated(angle)
         c = outline_color.as_int()
-        l = pyglet.shapes.Line(
+        line = pyglet.shapes.Line(
             pos.x, pos.y, cc.x, cc.y, width=1, color=c, batch=self.batch, group=fg
         )
-        self.draw_shapes.append(l)
+        self.draw_shapes.append(line)
 
     def draw_segment(self, a: Vec2d, b: Vec2d, color: SpaceDebugColor) -> None:
         c = color.as_int()
-        l = pyglet.shapes.Line(a.x, a.y, b.x, b.y, width=1, color=c, batch=self.batch)
-        self.draw_shapes.append(l)
+        line = pyglet.shapes.Line(a.x, a.y, b.x, b.y, width=1, color=c, batch=self.batch)
+        self.draw_shapes.append(line)
 
     def draw_fat_segment(
         self,

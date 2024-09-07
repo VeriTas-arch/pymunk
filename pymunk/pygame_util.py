@@ -39,7 +39,7 @@ __all__ = [
     "positive_y_is_up",
 ]
 
-from typing import List, Sequence, Tuple
+from typing import Sequence, Tuple
 
 import pygame
 
