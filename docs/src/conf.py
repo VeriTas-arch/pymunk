@@ -38,10 +38,10 @@ html_theme = "alabaster"
 html_static_path = ["_static"]
 
 # Font
-# html_theme_options = {
-#     "font_family": '"Lucida Grande",Arial,sans-serif',
-#     "head_font_family": '"Lucida Grande",Arial,sans-serif',
-# }
+html_theme_options = {
+    "font_family": '"Lucida Grande",Arial,sans-serif',
+    "head_font_family": '"Lucida Grande",Arial,sans-serif',
+}
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
