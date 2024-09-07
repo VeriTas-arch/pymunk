@@ -129,6 +129,9 @@ class Vec2d(NamedTuple):
     def __rmul__(self, other: float) -> "Vec2d":  # type: ignore[override]
         """Multiply a float with a Vec2d.
 
+        The operator is left associative, however, the result is the same.
+        To be simpler, you can regard the `__mul__` as `*` in common sense.
+
         >>> 2.5 * Vec2d(3,6)
         Vec2d(7.5, 15.0)
         """
@@ -268,7 +271,7 @@ class Vec2d(NamedTuple):
     def normalized(self) -> "Vec2d":
         """Get a normalized copy of the vector.
 
-        Note: This function will return 0 if the length of the vector is 0.
+        .. Note:: This function will return 0 if the length of the vector is 0.
 
         :return: A normalized vector
         """
@@ -290,14 +293,14 @@ class Vec2d(NamedTuple):
     def perpendicular(self) -> "Vec2d":
         """Get a vertical vector rotated 90 degrees counterclockwise from the original vector.
 
-        :return: A new vector perpendicular to this vector.
+        :return: A new vector perpendicular to this vector
         """
         return Vec2d(-self.y, self.x)
 
     def perpendicular_normal(self) -> "Vec2d":
         """Get a vertical normalized vector rotated 90 degrees counterclockwise from the original vector.
 
-        :return: A new normalized vector perpendicular to this vector.
+        :return: A new normalized vector perpendicular to this vector
         """
         length = self.length
         if length != 0:
@@ -371,7 +374,7 @@ class Vec2d(NamedTuple):
     ) -> "Vec2d":
         """Convert the vector to a new basis defined by the given `x` and `y` vectors.
 
-        :return: Vec2d: The vector converted to the new basis.
+        :return: The vector converted to the new basis
         """
         assert len(x_vector) == 2
         assert len(y_vector) == 2
@@ -383,7 +386,7 @@ class Vec2d(NamedTuple):
     def int_tuple(self) -> Tuple[int, int]:
         """The `x` and `y` values of this vector as a tuple of ints.
 
-        + Use `round()` to round to closest int.
+        + `round()` is used to round given values to the closest int.
 
         >>> Vec2d(0.9, 2.4).int_tuple
         (1, 2)

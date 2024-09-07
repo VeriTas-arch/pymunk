@@ -170,7 +170,8 @@ class Transform(NamedTuple):
     def translation(x: float, y: float) -> "Transform":
         """A translation transform.
 
-        Example to translate (move) by 3 on x and 5 in y axis:
+        Example:
+            Translate (move) by 3 on x and 5 in y axis.
 
         >>> Transform.translation(3, 5)
         Transform(a=1, b=0, c=0, d=1, tx=3, ty=5)
@@ -191,7 +192,8 @@ class Transform(NamedTuple):
     def scaling(s: float) -> "Transform":
         """A scaling transform.
 
-        Example to scale `4x`:
+        Example:
+            Scale by 4.
 
         >>> Transform.scaling(4)
         Transform(a=4, b=0, c=0, d=4, tx=0, ty=0)
@@ -209,10 +211,10 @@ class Transform(NamedTuple):
 
     @staticmethod
     def rotation(t: float) -> "Transform":
-        """A rotation transform
+        """A rotation transform.
 
-        Example to rotate by 1 rad:
-
+        Example:
+            Rotate by 1 rad.
         >>> '%.2f, %.2f, %.2f, %.2f, %.2f, %.2f' % Transform.rotation(1)
         '0.54, 0.84, -0.84, 0.54, 0.00, 0.00'
 

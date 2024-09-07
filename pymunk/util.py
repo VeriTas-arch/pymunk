@@ -30,18 +30,16 @@ to be removed in the next Pymunk release.
 """
 __docformat__ = "reStructuredText"
 
+from functools import partial
 from math import sqrt
 
 from .vec2d import Vec2d
 
 X, Y = 0, 1
 
-from functools import partial
-
 
 def is_clockwise(points):
-    """
-    Check if the points given forms a clockwise polygon
+    """Check if the points given forms a clockwise polygon.
 
     :return: True if the points forms a clockwise polygon
     """
@@ -75,7 +73,7 @@ def is_left(p0, p1, p2):
 
 
 def is_convex(points):
-    """Test if a polygon (list of (x,y)) is convex or not
+    """Test if a polygon (list of (x,y)) is convex or not.
 
     :return: True if the polygon is convex, False otherwise
     """
@@ -102,19 +100,21 @@ def is_convex(points):
 
 
 def sign(x):
-    """Sign function.
+    """Get the sign of given number.
 
-    :return -1 if x < 0, else return 1
+    :return: -1 if x < 0, else return 1
     """
-    if x < 0:
-        return -1
-    else:
-        return 1
+    # if x < 0:
+    #     return -1
+    # else:
+    #     return 1
+    return -1 if x < 0 else 1
 
 
 def reduce_poly(points, tolerance=0.5):
-    """Remove close points to simplify a polyline
-    tolerance is the min distance between two points squared.
+    """Remove close points to simplify a polyline.
+
+    `tolerance` is the min distance between two points squared.
 
     :return: The reduced polygon as a list of (x,y)
     """
@@ -135,6 +135,7 @@ def reduce_poly(points, tolerance=0.5):
 
 def convex_hull(points):
     """Create a convex hull from a list of points.
+
     This function uses the Graham Scan Algorithm.
 
     :return: Convex hull as a list of (x,y)
@@ -163,28 +164,28 @@ def convex_hull(points):
     for p in points[2:]:
         pt1 = hull[-1]
         pt2 = hull[-2]
-        l = is_left(pt2, pt1, p)
-        if l > 0:
+        p_is_left = is_left(pt2, pt1, p)
+        if p_is_left > 0:
             hull.append(p)
         else:
-            while l <= 0 and len(hull) > 2:
+            while p_is_left <= 0 and len(hull) > 2:
                 hull.pop()
                 pt1 = hull[-1]
                 pt2 = hull[-2]
-                l = is_left(pt2, pt1, p)
+                p_is_left = is_left(pt2, pt1, p)
             hull.append(p)
     return hull
 
 
 def calc_center(points):
-    """Calculate the center of a polygon
+    """Calculate the center of a polygon.
 
-    :return: The center (x,y)
+    :return: The center coordinate as (x,y)
     """
 
     # ref: http://en.wikipedia.org/wiki/Polygon
 
-    assert len(points) > 0, "need at least 1 points to calculate the center"
+    assert len(points) > 0, "need at least 1 point to calculate the center"
 
     area = calc_area(points)
 
@@ -200,8 +201,9 @@ def calc_center(points):
 
 
 def poly_vectors_around_center(pointlist, points_as_Vec2d=True):
-    """Rearranges vectors around the center
-    If points_as_Vec2d, then return points are also Vec2d, else pos
+    """Rearrange vectors around the center.
+
+    If `points_as_Vec2d=True`, then return points are also Vec2d, else pos.
 
     :return: pointlist ([Vec2d/pos, ...])
     """
@@ -225,7 +227,7 @@ def poly_vectors_around_center(pointlist, points_as_Vec2d=True):
 
 
 def calc_area(points):
-    """Calculate the area of a polygon
+    """Calculate the area of a polygon.
 
     :return: Area of polygon
     """
@@ -246,7 +248,7 @@ def calc_area(points):
 
 
 def calc_perimeter(points):
-    """Calculate the perimeter of a polygon
+    """Calculate the perimeter of a polygon.
 
     :return: Perimeter of polygon
     """
@@ -266,7 +268,7 @@ def calc_perimeter(points):
 
 
 def _cmp_to_key(mycmp):
-    "Convert a cmp= function into a key= function, useful for python 3"
+    "Convert a cmp= function into a key= function, useful for python 3."
 
     class K(object):
         def __init__(self, obj, *args):
@@ -334,7 +336,7 @@ def _get_ear(poly):
             # are there any other points inside triangle abc?
             valid = True
             for j in range(count):
-                if not (j in (ia, ib, ic)):
+                if j not in (ia, ib, ic):
                     p = poly[j]
                     if _point_in_triangle(p, a, b, c):
                         valid = False
@@ -378,11 +380,11 @@ def _reduce_hulls(hulls):
         for ib in range(ia + 1, count):
             # see if hulls can be reduced to one
             reduction = _attempt_reduction(hulls[ia], hulls[ib])
-            if reduction != None:
+            if reduction is not None:
                 # they can so return a new list of hulls and a True
                 newhulls = [reduction]
                 for j in range(count):
-                    if not (j in (ia, ib)):
+                    if j not in (ia, ib):
                         newhulls.append(hulls[j])
                 return newhulls, True
 
@@ -418,8 +420,8 @@ def triangulate(poly):
 
 
 def convexise(triangles):
-    """Reduces a list of triangles (such as returned by triangulate()) to a
-    non-optimum list of convex polygons
+    """Reduce a list of triangles (such as returned by triangulate()) to a
+    non-optimum list of convex polygons.
 
     :Parameters:
         triangles
