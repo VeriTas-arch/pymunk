@@ -415,9 +415,9 @@ class Space(PickleMixin, object):
         # print("addshape", self._space, shape)
         assert shape._id not in self._shapes, "Shape already added to space."
         assert (
-            shape.space == None
+            shape.space is None
         ), "Shape already added to another space. A shape can only be in one space at a time."
-        assert shape.body != None, "The shape's body is not set."
+        assert shape.body is not None, "The shape's body is not set."
         assert (
             shape.body.space == self
         ), "The shape's body must be added to the space before (or at the same time) as the shape."
@@ -429,7 +429,7 @@ class Space(PickleMixin, object):
     def _add_body(self, body: "Body") -> None:
         """Adds a body to the space"""
         assert body not in self._bodies, "Body already added to this space."
-        assert body.space == None, "Body already added to another space."
+        assert body.space is None, "Body already added to another space."
 
         body._space = weakref.proxy(self)
         self._bodies[body] = None
@@ -467,7 +467,7 @@ class Space(PickleMixin, object):
             constraint in self._constraints
         ), "constraint not in space, already removed?"
         # print("remove", constraint, constraint._constraint, self._constraints)
-        # During GC at program exit sometimes the constraint might already be removed. Then skip this steip.
+        # During GC at program exit sometimes the constraint might already be removed. Then skip this step.
         if cp.cpSpaceContainsConstraint(self._space, constraint._constraint):
             cp.cpSpaceRemoveConstraint(self._space, constraint._constraint)
         del self._constraints[constraint]
@@ -500,12 +500,12 @@ class Space(PickleMixin, object):
     threads = property(
         _get_threads,
         _set_threads,
-        doc="""The number of threads to use for running the step function. 
-        
-        Only valid when the Space was created with threaded=True. Currently the 
-        max limit is 2, setting a higher value wont have any effect. The 
-        default is 1 regardless if the Space was created with threaded=True, 
-        to keep determinism in the simulation. Note that Windows does not 
+        doc="""The number of threads to use for running the step function.
+
+        Only valid when the Space was created with threaded=True. Currently the
+        max limit is 2, setting a higher value wont have any effect. The
+        default is 1 regardless if the Space was created with threaded=True,
+        to keep determinism in the simulation. Note that Windows does not
         support the threaded solver.
         """,
     )
@@ -798,7 +798,7 @@ class Space(PickleMixin, object):
 
         shape = self._get_shape(_shape)
 
-        if shape != None:
+        if shape is not None:
             return PointQueryInfo(
                 shape,
                 Vec2d(info.point.x, info.point.y),
@@ -882,7 +882,7 @@ class Space(PickleMixin, object):
         )
 
         shape = self._get_shape(_shape)
-        if shape != None:
+        if shape is not None:
             return SegmentQueryInfo(
                 shape,
                 Vec2d(info.point.x, info.point.y),
@@ -993,7 +993,7 @@ class Space(PickleMixin, object):
         d["special"].append(("pymunk_version", _version.version))
         # bodies needs to be added to the state before their shapes.
         d["special"].append(("bodies", self.bodies))
-        if self._static_body != None:
+        if self._static_body is not None:
             # print("getstate", self._static_body)
             d["special"].append(("_static_body", self._static_body))
 
@@ -1062,7 +1062,7 @@ class Space(PickleMixin, object):
                 self.add(*v)
             elif k == "_handlers":
                 for k2, hd in v:
-                    if k2 == None:
+                    if k2 is None:
                         h = self.add_default_collision_handler()
                     elif isinstance(k2, tuple):
                         h = self.add_collision_handler(k2[0], k2[1])

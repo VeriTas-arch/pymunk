@@ -62,7 +62,7 @@ class Body(PickleMixin, TypingAttrMixing, object):
     """Kinematic bodies are bodies that are controlled from your code
     instead of inside the physics engine.
 
-    They arent affected by gravity and they have an infinite amount of mass
+    They are not affected by gravity and they have an infinite amount of mass
     so they don't react to collisions or forces with other bodies. Kinematic
     bodies are controlled by setting their velocity, which will cause them
     to move. Good examples of kinematic bodies might include things like
@@ -289,8 +289,8 @@ class Body(PickleMixin, TypingAttrMixing, object):
         doc="""Position of the body.
 
         When changing the position you may also want to call
-        :py:func:`Space.reindex_shapes_for_body` to update the collision 
-        detection information for the attached shapes if plan to make any 
+        :py:func:`Space.reindex_shapes_for_body` to update the collision
+        detection information for the attached shapes if plan to make any
         queries against the space.""",
     )
 
@@ -339,8 +339,8 @@ class Body(PickleMixin, TypingAttrMixing, object):
         _set_force,
         doc="""Force applied to the center of gravity of the body.
 
-        This value is reset for every time step. Note that this is not the 
-        total of forces acting on the body (such as from collisions), but the 
+        This value is reset for every time step. Note that this is not the
+        total of forces acting on the body (such as from collisions), but the
         force applied manually from the apply force functions.""",
     )
 
@@ -356,9 +356,9 @@ class Body(PickleMixin, TypingAttrMixing, object):
         doc="""Rotation of the body in radians.
 
         When changing the rotation you may also want to call
-        :py:func:`Space.reindex_shapes_for_body` to update the collision 
-        detection information for the attached shapes if plan to make any 
-        queries against the space. A body rotates around its center of gravity, 
+        :py:func:`Space.reindex_shapes_for_body` to update the collision
+        detection information for the attached shapes if plan to make any
+        queries against the space. A body rotates around its center of gravity,
         not its position.
 
         .. Note::
@@ -428,17 +428,17 @@ class Body(PickleMixin, TypingAttrMixing, object):
 
     velocity_func = property(
         fset=_set_velocity_func,
-        doc="""The velocity callback function. 
-        
-        The velocity callback function is called each time step, and can be 
+        doc="""The velocity callback function.
+
+        The velocity callback function is called each time step, and can be
         used to set a body's velocity.
 
             ``func(body : Body, gravity, damping, dt)``
 
-        There are many cases when this can be useful. One example is individual 
-        gravity for some bodies, and another is to limit the velocity which is 
-        useful to prevent tunneling. 
-        
+        There are many cases when this can be useful. One example is individual
+        gravity for some bodies, and another is to limit the velocity which is
+        useful to prevent tunneling.
+
         Example of a callback that sets gravity to zero for a object.
 
         >>> import pymunk
@@ -448,7 +448,7 @@ class Body(PickleMixin, TypingAttrMixing, object):
         >>> space.add(body)
         >>> def zero_gravity(body, gravity, damping, dt):
         ...     pymunk.Body.update_velocity(body, (0,0), damping, dt)
-        ... 
+        ...
         >>> body.velocity_func = zero_gravity
         >>> space.step(1)
         >>> space.step(1)
@@ -483,9 +483,9 @@ class Body(PickleMixin, TypingAttrMixing, object):
 
     position_func = property(
         fset=_set_position_func,
-        doc="""The position callback function. 
-        
-        The position callback function is called each time step and can be 
+        doc="""The position callback function.
+
+        The position callback function is called each time step and can be
         used to update the body's position.
 
             ``func(body, dt) -> None``
@@ -582,7 +582,7 @@ class Body(PickleMixin, TypingAttrMixing, object):
 
         Cannot be called from a callback.
         """
-        if self._space == None:
+        if self._space is None:
             raise Exception("Body not added to space")
         lib.cpBodySleep(self._body)
 
@@ -600,7 +600,7 @@ class Body(PickleMixin, TypingAttrMixing, object):
         to initialize levels and start stacks of objects in a pre-sleeping
         state.
         """
-        if self._space == None:
+        if self._space is None:
             raise Exception("Body not added to space")
         lib.cpBodySleepWithGroup(self._body, body._body)
 
@@ -618,7 +618,7 @@ class Body(PickleMixin, TypingAttrMixing, object):
     body_type = property(
         _get_type,
         _set_type,
-        doc="""The type of a body (:py:const:`Body.DYNAMIC`, 
+        doc="""The type of a body (:py:const:`Body.DYNAMIC`,
         :py:const:`Body.KINEMATIC` or :py:const:`Body.STATIC`).
 
         When changing an body to a dynamic body, the mass and moment of
@@ -743,7 +743,7 @@ class Body(PickleMixin, TypingAttrMixing, object):
         for k, v in state["special"]:
             if k == "is_sleeping" and v:
                 pass
-            elif k == "_velocity_func" and v != None:
+            elif k == "_velocity_func" and v is not None:
                 self.velocity_func = v
-            elif k == "_position_func" and v != None:
+            elif k == "_position_func" and v is not None:
                 self.position_func = v

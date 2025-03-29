@@ -28,7 +28,7 @@ for folder in source_folders:
         if fn[-1] == "c":
             # Ignore cpHastySpace since it depends on pthread which
             # creates a dependency on libwinpthread-1.dll when built
-            # with  mingw-w64 gcc.
+            # with mingw-w64 gcc.
             # Will prevent the code from being multithreaded, would be
             # good if some tests could be made to verify the performance
             # of this.
@@ -64,7 +64,7 @@ ffibuilder.set_source(
         #include "chipmunk/chipmunk_unsafe.h"
         #include "chipmunk/cpPolyline.h"
         #include "chipmunk/cpMarch.h"
-        
+
         {hasty_space_include}
 
         // from chipmunk_private.h

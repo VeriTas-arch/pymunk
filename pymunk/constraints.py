@@ -28,7 +28,7 @@ body, or they can be more abstract like the gear joint or motors.
 
 This submodule contain all the constraints that are supported by Pymunk.
 
-All the constraints support copy and pickle from the standard library. Custom 
+All the constraints support copy and pickle from the standard library. Custom
 properties set on a constraint will also be copied/pickled.
 
 Chipmunk has a good overview of the different constraint on youtube which
@@ -302,9 +302,9 @@ class Constraint(PickleMixin, TypingAttrMixing, object):
         super(Constraint, self).__setstate__(state)
 
         for k, v in state["special"]:
-            if k == "_pre_solve_func" and v != None:
+            if k == "_pre_solve_func" and v is not None:
                 self.pre_solve = v
-            elif k == "_post_solve_func" and v != None:
+            elif k == "_post_solve_func" and v is not None:
                 self.post_solve = v
 
 
@@ -694,10 +694,10 @@ class DampedSpring(Constraint):
 
     force_func = property(
         fset=_set_force_func,
-        doc="""The force callback function. 
-        
+        doc="""The force callback function.
+
         The force callback function is called each time step and is used to
-        calculate the force of the spring (exclusing any damping).
+        calculate the force of the spring (excluding any damping).
 
         Defaults to :py:func:`DampedSpring.spring_force`
         """,
@@ -705,7 +705,7 @@ class DampedSpring(Constraint):
 
 
 class DampedRotarySpring(Constraint):
-    """DampedRotarySpring works like the DammpedSpring but in a angular fashion."""
+    """DampedRotarySpring works like the DampedSpring but in a angular fashion."""
 
     _pickle_attrs_init = Constraint._pickle_attrs_init + [
         "rest_angle",
@@ -778,7 +778,7 @@ class DampedRotarySpring(Constraint):
         """The torque callback function.
 
         The torque callback function is called each time step and is used to
-        calculate the torque of the spring (exclusing any damping).
+        calculate the torque of the spring (excluding any damping).
 
         Defaults to :py:func:`DampedRotarySpring.spring_torque`
         """

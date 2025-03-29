@@ -30,10 +30,10 @@ Homepage: http://www.pymunk.org
 This is the main containing module of Pymunk. It contains among other things
 the very central Space, Body and Shape classes.
 
-Pymunk uses the standard logging module to log helpful information. It does 
+Pymunk uses the standard logging module to log helpful information. It does
 that under the "pymunk" name. If you do not do anything setup, it will print
-WARNING and higher messages to stderr. (Note that you most likely do not want 
-to set logLevel to DEBUG, since Pymunk might log a lot of debug level 
+WARNING and higher messages to stderr. (Note that you most likely do not want
+to set logLevel to DEBUG, since Pymunk might log a lot of debug level
 messages mostly useful during development of Pymunk itself.)
 
 """

@@ -1,4 +1,4 @@
-"""This module contain functions for automatic generation of geometry, for 
+"""This module contain functions for automatic generation of geometry, for
 example from an image.
 
 Example::
@@ -23,7 +23,7 @@ Example::
     >>> print(len(pl_set))
     2
 
-The information in segments can now be used to create geometry, for example as 
+The information in segments can now be used to create geometry, for example as
 a Pymunk Poly or Segment::
 
     >>> s = pymunk.Space()
@@ -31,7 +31,7 @@ a Pymunk Poly or Segment::
     ...     for i in range(len(poly_line) - 1):
     ...         a = poly_line[i]
     ...         b = poly_line[i + 1]
-    ...         segment = pymunk.Segment(s.static_body, a, b, 1)  
+    ...         segment = pymunk.Segment(s.static_body, a, b, 1)
     ...         s.add(segment)
 
 
@@ -173,7 +173,7 @@ class PolylineSet(Sequence[List[Vec2d]]):
     """
 
     def __init__(self) -> None:
-        """Initalize a new PolylineSet"""
+        """Initialize a new PolylineSet"""
 
         def free(_set: ffi.CData) -> None:
             lib.cpPolylineSetFree(_set, True)

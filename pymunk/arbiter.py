@@ -1,7 +1,7 @@
 __docformat__ = "reStructuredText"
 
 
-from typing import TYPE_CHECKING, Tuple, Dict, List, Any, Iterable, Sequence
+from typing import TYPE_CHECKING, Tuple, Dict, List, Any, Sequence
 
 if TYPE_CHECKING:
     from .space import Space
@@ -45,7 +45,7 @@ class Arbiter(object):
     def _set_contact_point_set(self, point_set: ContactPointSet) -> None:
         # This has to be done by fetching a new Chipmunk point set, update it
         # according to whats passed in and the pass that back to chipmunk due
-        # to the fact that ContactPointSet doesnt contain a reference to the
+        # to the fact that ContactPointSet doesn't contain a reference to the
         # corresponding c struct.
         _set = lib.cpArbiterGetContactPointSet(self._arbiter)
         _set.normal = point_set.normal
@@ -66,9 +66,9 @@ class Arbiter(object):
     contact_point_set = property(
         _get_contact_point_set,
         _set_contact_point_set,
-        doc="""Contact point sets make getting contact information from the 
+        doc="""Contact point sets make getting contact information from the
         Arbiter simpler.
-        
+
         Return `ContactPointSet`""",
     )
 
@@ -96,11 +96,11 @@ class Arbiter(object):
     restitution = property(
         _get_restitution,
         _set_restitution,
-        doc="""The calculated restitution (elasticity) for this collision 
-        pair. 
-        
-        Setting the value in a pre_solve() callback will override the value 
-        calculated by the space. The default calculation multiplies the 
+        doc="""The calculated restitution (elasticity) for this collision
+        pair.
+
+        Setting the value in a pre_solve() callback will override the value
+        calculated by the space. The default calculation multiplies the
         elasticity of the two shapes together.
         """,
     )
@@ -114,10 +114,10 @@ class Arbiter(object):
     friction = property(
         _get_friction,
         _set_friction,
-        doc="""The calculated friction for this collision pair. 
-        
-        Setting the value in a pre_solve() callback will override the value 
-        calculated by the space. The default calculation multiplies the 
+        doc="""The calculated friction for this collision pair.
+
+        Setting the value in a pre_solve() callback will override the value
+        calculated by the space. The default calculation multiplies the
         friction of the two shapes together.
         """,
     )
@@ -132,15 +132,15 @@ class Arbiter(object):
     surface_velocity = property(
         _get_surface_velocity,
         _set_surface_velocity,
-        doc="""The calculated surface velocity for this collision pair. 
-        
-        Setting the value in a pre_solve() callback will override the value 
-        calculated by the space. the default calculation subtracts the 
-        surface velocity of the second shape from the first and then projects 
-        that onto the tangent of the collision. This is so that only 
-        friction is affected by default calculation. Using a custom 
-        calculation, you can make something that responds like a pinball 
-        bumper, or where the surface velocity is dependent on the location 
+        doc="""The calculated surface velocity for this collision pair.
+
+        Setting the value in a pre_solve() callback will override the value
+        calculated by the space. the default calculation subtracts the
+        surface velocity of the second shape from the first and then projects
+        that onto the tangent of the collision. This is so that only
+        friction is affected by default calculation. Using a custom
+        calculation, you can make something that responds like a pinball
+        bumper, or where the surface velocity is dependent on the location
         of the contact point.
         """,
     )

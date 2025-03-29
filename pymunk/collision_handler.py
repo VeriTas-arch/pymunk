@@ -50,14 +50,14 @@ class CollisionHandler(object):
         self._data: Dict[Any, Any] = {}
 
     def _reset(self) -> None:
-        def allways_collide(arb: Arbiter, space: "Space", data: Any) -> bool:
+        def always_collide(arb: Arbiter, space: "Space", data: Any) -> bool:
             return True
 
         def do_nothing(arb: Arbiter, space: "Space", data: Any) -> None:
             return
 
-        self.begin = allways_collide
-        self.pre_solve = allways_collide
+        self.begin = always_collide
+        self.pre_solve = always_collide
         self.post_solve = do_nothing
         self.separate = do_nothing
 
@@ -68,7 +68,7 @@ class CollisionHandler(object):
 
         data is a dictionary and you can not replace it, only fill it with data.
 
-        Usefull if the callback needs some extra data to perform its function.
+        Useful if the callback needs some extra data to perform its function.
         """
         return self._data
 
@@ -89,7 +89,7 @@ class CollisionHandler(object):
         Return true from the callback to process the collision normally or
         false to cause pymunk to ignore the collision entirely. If you return
         false, the `pre_solve` and `post_solve` callbacks will never be run,
-        but you will still recieve a separate event when the shapes stop
+        but you will still receive a separate event when the shapes stop
         overlapping.
         """,
     )

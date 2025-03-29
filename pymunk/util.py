@@ -24,8 +24,8 @@
 """This submodule contains utility functions, mainly to help with polygon
 creation.
 
-.. note:: this submodule is deprectade by the autogeometry submodule. Expect it 
-to be removed in the next Pymunk release. 
+.. note:: this submodule is deprecated by the autogeometry submodule. Expect it
+to be removed in the next Pymunk release.
 
 """
 __docformat__ = "reStructuredText"
@@ -334,7 +334,7 @@ def _get_ear(poly):
             # are there any other points inside triangle abc?
             valid = True
             for j in range(count):
-                if not (j in (ia, ib, ic)):
+                if j not in (ia, ib, ic):
                     p = poly[j]
                     if _point_in_triangle(p, a, b, c):
                         valid = False
@@ -378,11 +378,11 @@ def _reduce_hulls(hulls):
         for ib in range(ia + 1, count):
             # see if hulls can be reduced to one
             reduction = _attempt_reduction(hulls[ia], hulls[ib])
-            if reduction != None:
+            if reduction is not None:
                 # they can so return a new list of hulls and a True
                 newhulls = [reduction]
                 for j in range(count):
-                    if not (j in (ia, ib)):
+                    if j not in (ia, ib):
                         newhulls.append(hulls[j])
                 return newhulls, True
 

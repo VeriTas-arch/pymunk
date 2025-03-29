@@ -21,12 +21,12 @@
 # SOFTWARE.
 # ----------------------------------------------------------------------------
 
-"""This submodule contains helper functions to help with quick prototyping 
+"""This submodule contains helper functions to help with quick prototyping
 using pymunk together with pygame.
 
 Intended to help with debugging and prototyping, not for actual production use
-in a full application. The methods contained in this module is opinionated 
-about your coordinate system and not in any way optimized. 
+in a full application. The methods contained in this module is opinionated
+about your coordinate system and not in any way optimized.
 """
 
 __docformat__ = "reStructuredText"
@@ -39,7 +39,7 @@ __all__ = [
     "positive_y_is_up",
 ]
 
-from typing import List, Sequence, Tuple
+from typing import Sequence, Tuple
 
 import pygame
 
@@ -59,7 +59,7 @@ When True::
     |   . (2, 2)
     |
     +------ > x
-    
+
 When False::
 
     +------ > x
@@ -69,7 +69,7 @@ When False::
     |      . (3, 3)
     v
     y
-    
+
 """
 
 
@@ -93,7 +93,7 @@ class DrawOptions(pymunk.SpaceDebugDrawOptions):
 
         See pygame_util.demo.py for a full example
 
-        Since pygame uses a coordiante system where y points down (in contrast
+        Since pygame uses a coordinate system where y points down (in contrast
         to many other cases), you either have to make the physics simulation
         with Pymunk also behave in that way, or flip everything when you draw.
 

@@ -84,19 +84,19 @@ class ShapeFilter(NamedTuple):
 
     group: int = 0
     """Two objects with the same non-zero group value do not collide.
-	
+
     This is generally used to group objects in a composite object together to disable self collisions.
     """
 
     categories: int = 0xFFFFFFFF
     """A bitmask of user definable categories that this object belongs to.
-	
+
     The category/mask combinations of both objects in a collision must agree for a collision to occur.
     """
 
     mask: int = 0xFFFFFFFF
     """A bitmask of user definable category types that this object object collides with.
-	
+
     The category/mask combinations of both objects in a collision must agree for a collision to occur.
 	"""
 

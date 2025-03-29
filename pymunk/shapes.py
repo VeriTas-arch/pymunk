@@ -272,7 +272,7 @@ class Shape(PickleMixin, TypingAttrMixing, object):
         _get_body,
         _set_body,
         doc="""The body this shape is attached to. Can be set to None to
-        indicate that this shape doesnt belong to a body.""",
+        indicate that this shape doesn't belong to a body.""",
     )
 
     def update(self, transform: Transform) -> BB:

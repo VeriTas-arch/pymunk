@@ -52,7 +52,7 @@ Vec2ds can be converted to lists or tuples, and they are of length 2::
     >>> len(Vec2d(1, 2))
     2
 
-The Vec2d supports many common opertions, for example addition and 
+The Vec2d supports many common operations, for example addition and
 multiplication::
 
     >>> Vec2d(7.3, 4.2) + Vec2d(1, 2)
@@ -60,7 +60,7 @@ multiplication::
     >>> Vec2d(7.3, 4.2) * 2
     Vec2d(14.6, 8.4)
 
-Vec2ds are immutable, meaning you cannot update them. But you can replace 
+Vec2ds are immutable, meaning you cannot update them. But you can replace
 them::
 
     >>> v = Vec2d(1, 2)
@@ -122,7 +122,7 @@ class Vec2d(NamedTuple):
     y: float
 
     def __repr__(self) -> str:
-        """String representaion of Vec2d (for debugging)
+        """String representation of Vec2d (for debugging)
 
         >>> repr(Vec2d(1, 2.3))
         'Vec2d(1, 2.3)'
@@ -446,7 +446,7 @@ class Vec2d(NamedTuple):
 
     def get_dist_sqrd(self, other: Tuple[float, float]) -> float:
         """The squared distance between the vector and other vector.
-        It is more efficent to use this method than to call get_distance()
+        It is more efficient to use this method than to call get_distance()
         first and then do a square() on the result.
 
         >>> Vec2d(1, 0).get_dist_sqrd((1, 10))

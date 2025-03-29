@@ -51,7 +51,7 @@ class BB(NamedTuple):
         return bool(lib.cpBBIntersectsSegment(self, a, b))
 
     def contains(self, other: "BB") -> bool:
-        """Returns true if bb completley contains the other bb"""
+        """Returns true if bb completely contains the other bb"""
         return bool(lib.cpBBContainsBB(self, other))
 
     def contains_vect(self, v: Tuple[float, float]) -> bool:
@@ -67,7 +67,7 @@ class BB(NamedTuple):
         return BB(cp_bb.l, cp_bb.b, cp_bb.r, cp_bb.t)
 
     def expand(self, v: Tuple[float, float]) -> "BB":
-        """Return the minimal bounding box that contans both this bounding box
+        """Return the minimal bounding box that contains both this bounding box
         and the vector v
         """
         cp_bb = lib.cpBBExpand(self, tuple(v))
@@ -91,7 +91,7 @@ class BB(NamedTuple):
     def segment_query(self, a: Tuple[float, float], b: Tuple[float, float]) -> float:
         """Returns the fraction along the segment query the BB is hit.
 
-        Returns infinity if it doesnt hit
+        Returns infinity if it doesn't hit
         """
         assert len(a) == 2
         assert len(b) == 2

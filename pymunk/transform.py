@@ -1,5 +1,5 @@
 import math
-from typing import NamedTuple, Tuple, Union, cast, overload
+from typing import NamedTuple, Tuple, Union, overload
 
 from .vec2d import Vec2d
 
@@ -31,7 +31,7 @@ class Transform(NamedTuple):
     Or using one of the static methods like identity or translation (see each
     method for details).
 
-    The Transform supports the matrix multiplicaiton operator (@) with a
+    The Transform supports the matrix multiplication operator (@) with a
     Transform, Vec2d or tuple as second operand, which produces a transformed
     Transform or Vec2d as result:
 

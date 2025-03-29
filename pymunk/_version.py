@@ -22,7 +22,7 @@
 # ----------------------------------------------------------------------------
 
 """
-Internal module used to make it possible to import the pymunk verison number 
+Internal module used to make it possible to import the pymunk version number
 from more places than __init__.
 
 """
